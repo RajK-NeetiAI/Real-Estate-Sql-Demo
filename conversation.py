@@ -65,11 +65,12 @@ def handle_chat_completion(chat_history: list[list]) -> list[list]:
                 assistant_message["tool_calls"][0]["function"]["arguments"])["query"]
             print(query)
             response = execute_function_call(query)
-            print(response)
         if response == '':
             response += 'Empty response'
+        print(response)
     else:
         response = assistant_message['content']
+        print(response)
 
     chat_history[-1][1] = response
 
