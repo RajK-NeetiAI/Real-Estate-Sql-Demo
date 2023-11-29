@@ -3,6 +3,7 @@ import json
 from openai_api import chat_completion_request
 from utils import database_schema_string, execute_function_call
 
+
 tools = [
     {
         "type": "function",

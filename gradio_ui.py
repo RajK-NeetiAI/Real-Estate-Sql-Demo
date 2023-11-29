@@ -6,7 +6,8 @@ with gr.Blocks(
     css='footer {visibility: hidden}'
 ) as demo:
 
-    chatbot = gr.Chatbot(label='Talk to your Math Tutor', bubble_full_width=False)
+    chatbot = gr.Chatbot(label='Talk to Real Estate bot',
+                         bubble_full_width=False)
     msg = gr.Textbox(label='Query', placeholder='Enter text and press enter')
     clear = gr.ClearButton([msg, chatbot], variant='stop')
 
