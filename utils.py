@@ -14,7 +14,7 @@ def get_table_names(cnx: mysql.connector.MySQLConnection) -> list[str]:
     cursor = cnx.cursor()
     table_names = []
     cursor.execute(
-        "SELECT table_name FROM information_schema.tables WHERE table_schema = 'real_estate';")
+        f"SELECT table_name FROM information_schema.tables WHERE table_schema = '{config.MYSQL_DB_NAME}';")
     for table in cursor:
         if table[0] in config.MYSQL_TABLES:
             table_names.append(table[0])
@@ -56,7 +56,7 @@ database_schema_string = "\n".join(
 )
 
 
-def serialize_datetime(obj):
+def serialize_datetime(obj: datetime.datetime) -> str:
     if isinstance(obj, datetime.datetime):
         return obj.isoformat()
     raise TypeError("Type not serializable")
