@@ -1,6 +1,6 @@
 import json
 
-from openai_api import chat_completion_request
+from openai_api import chat_completion_request, format_sql_response
 from utils import database_schema_string, execute_function_call
 
 
@@ -9,7 +9,7 @@ tools = [
         "type": "function",
         "function": {
             "name": "ask_database",
-            "description": "Use this function to answer user questions about music. Input should be a fully formed SQL query.",
+            "description": "Use this function to answer user questions about real estate. Input should be a fully formed SQL query.",
             "parameters": {
                 "type": "object",
                 "properties": {
@@ -52,6 +52,7 @@ def format_chat_history(chat_history: list[list]) -> list[list]:
 def handle_chat_completion(chat_history: list[list]) -> list[list]:
 
     query = chat_history[-1][0]
+    print(f'User query -> {query}')
 
     formated_chat_history = format_chat_history(chat_history)
 
@@ -62,16 +63,20 @@ def handle_chat_completion(chat_history: list[list]) -> list[list]:
         '''Call SQL and generate the response.
         '''
         if assistant_message["tool_calls"][0]["function"]["name"] == "ask_database":
-            query = json.loads(
+            sql_query = json.loads(
                 assistant_message["tool_calls"][0]["function"]["arguments"])["query"]
-            print(query)
-            response = execute_function_call(query)
-        if response == '':
-            response += 'Empty response'
-        print(response)
+            print(f'SQL query -> {sql_query}')
+            sql_response = execute_function_call(sql_query)
+            print(f'SQL response -> {sql_response}')
+        if sql_response == '':
+            response = "I am sorry, I don't have answer for that."
+        else:
+            response = format_sql_response(sql_response)
+            response = response["choices"][0]['message']['content']
     else:
         response = assistant_message['content']
-        print(response)
+
+    print(f'Agent response -> {response}')
 
     chat_history[-1][1] = response
 
