@@ -19,7 +19,7 @@ tools = [
                                 SQL query extracting info to answer the user's question.
                                 SQL should be written using this database schema:
                                 {database_schema_string}
-                                The query should be returned in plain text, not in JSON.
+                                The query should be returned in plain text, not in JSON and don't assume column names.
                                 """,
                     }
                 },
