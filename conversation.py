@@ -70,7 +70,9 @@ def handle_chat_completion(chat_history: list[list]) -> list[list]:
             sql_response = execute_function_call(sql_query)
             print(f'SQL response -> {sql_response}')
         if sql_response == '':
-            response = "I am sorry, I don't have answer for that."
+            response = get_openai_response(f'''You are a real estate agent. A user has asked a \
+question: {query}, in the context of the following chat history: {formated_chat_history}, politely reply that \
+you don't have answer of the question.''')
         else:
             response = format_sql_response(sql_response)
             response = response["choices"][0]['message']['content']
@@ -87,3 +89,12 @@ def handle_chat_completion(chat_history: list[list]) -> list[list]:
 def handle_user_query(message: str, chat_history: list[tuple]) -> tuple:
     chat_history += [[message, None]]
     return '', chat_history
+
+
+def get_openai_response(instruction: str) -> str:
+    messages = []
+    messages.append({'role': 'user', 'content': instruction})
+    response = chat_completion_request(messages)
+    response = response['choices'][0]['message']['content']
+
+    return response
