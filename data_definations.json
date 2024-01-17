@@ -1,0 +1,196 @@
+{
+    "tables": [
+  {
+    "name": "app_project",
+    "description": "This table stores detailed information about various property projects.",
+    "columns": [
+      {
+        "name": "project_no",
+        "type": "varchar(255)",
+        "description": "Unique identifier for each project."
+      },
+      {
+        "name": "year_built",
+        "type": "varchar(255)",
+        "description": "The year in which the property was built."
+      },
+      {
+        "name": "property_size",
+        "type": "varchar(255)",
+        "description": "The size of the property."
+      },
+      {
+        "name": "price",
+        "type": "varchar(255)",
+        "description": "The listed price of the property."
+      },
+      {
+        "name": "lot_size",
+        "type": "varchar(255)",
+        "description": "The size of the property's lot."
+      },
+      {
+        "name": "price_per_sqft",
+        "type": "varchar(255)",
+        "description": "The price of the property per square foot."
+      },
+      {
+        "name": "property_type",
+        "type": "varchar(255)",
+        "description": "The type of property, such as Condo, House, Villa, or Duplex."
+      },
+      {
+        "name": "family_type",
+        "type": "varchar(255)",
+        "description": "The family type suitable for the property, such as Single or Multi."
+      },
+      {
+        "name": "bedroom",
+        "type": "bigint(20)",
+        "description": "The number of bedrooms in the property."
+      },
+      {
+        "name": "bathroom_details",
+        "type": "longtext",
+        "description": "Detailed information about the bathrooms in the property."
+      },
+      {
+        "name": "address",
+        "type": "longtext",
+        "description": "The physical address of the property."
+      },
+      {
+        "name": "appliances",
+        "type": "longtext",
+        "description": "Details about the appliances included with the property."
+      },
+      {
+        "name": "community_and_neighborhood",
+        "type": "longtext",
+        "description": "Information about the community and neighborhood around the property."
+      },
+      {
+        "name": "construction_details",
+        "type": "longtext",
+        "description": "Details about the construction of the property."
+      },
+      {
+        "name": "cooling",
+        "type": "longtext",
+        "description": "Information about the cooling systems in the property."
+      },
+      {
+        "name": "flooring",
+        "type": "longtext",
+        "description": "Details of the types of flooring used in the property."
+      },
+      {
+        "name": "green_energy_details",
+        "type": "longtext",
+        "description": "Information about any green energy features in the property."
+      },
+      {
+        "name": "heating",
+        "type": "longtext",
+        "description": "Details about the heating system in the property."
+      },
+      {
+        "name": "hoa_and_financial_details",
+        "type": "longtext",
+        "description": "Information about homeowners association fees and other financial details related to the property."
+      },
+      {
+        "name": "nearby_schools",
+        "type": "longtext",
+        "description": "Details about schools in the vicinity of the property."
+      },
+      {
+        "name": "parking_details",
+        "type": "longtext",
+        "description": "Information about parking facilities available with the property."
+      },
+      {
+        "name": "property_details",
+        "type": "longtext",
+        "description": "General details and other information about the property."
+      },
+      {
+        "name": "utility_details",
+        "type": "longtext",
+        "description": "Details about the utilities available in the property."
+      },
+      {
+        "name": "whats_special",
+        "type": "longtext",
+        "description": "Special features or attractions of the property."
+      },
+      {
+        "name": "contact_details",
+        "type": "longtext",
+        "description": "Contact information for further inquiries about the property."
+      },
+      {
+        "name": "country",
+        "type": "varchar(255)",
+        "description": "The country in which the property is located."
+      },
+      {
+        "name": "state",
+        "type": "varchar(255)",
+        "description": "The state in which the property is located."
+      },
+      {
+        "name": "city",
+        "type": "varchar(255)",
+        "description": "The city where the property is located."
+      },
+      {
+        "name": "zipcode",
+        "type": "varchar(255)",
+        "description": "The postal code of the property's location."
+      },
+      {
+        "name": "getting_around_details",
+        "type": "longtext",
+        "description": "Information about transportation options and accessibility in the area."
+      },
+      {
+        "name": "other_details",
+        "type": "longtext",
+        "description": "Any additional details or notes about the property."
+      }
+    ]
+  },
+  {
+    "name": "app_projectdocument",
+    "description": "This table stores documents related to the property projects, such as images, contracts, and plans.",
+    "columns": [
+      {
+        "name": "id",
+        "type": "bigint(20)",
+        "description": "Unique identifier for each document."
+      },
+      {
+        "name": "type",
+        "type": "varchar(255)",
+        "description": "The type of document (e.g., image, PDF)."
+      },
+      {
+        "name": "path",
+        "type": "varchar(255)",
+        "description": "The storage path or URL of the document."
+      },
+      {
+        "name": "project_id",
+        "type": "bigint(20)",
+        "description": "The identifier of the project to which the document is related."
+      },
+      {
+        "name": "project_no",
+        "type": "varchar(255)",
+        "description": "The project number associated with the document."
+      }
+    ]
+  }
+]
+}

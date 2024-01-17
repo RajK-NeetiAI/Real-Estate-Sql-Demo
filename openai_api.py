@@ -45,8 +45,9 @@ def format_sql_response(sql_response: str, model: str = config.GPT_MODEL) -> str
     messages = [
         {"role": "system", "content": "You are a real estate agent. You help user get information \
 about different property from the listing."},
-        {"role": "user", "content": f"Convert the following SQL data into natural language, keep \
-the response short and concise and never mention id of the SQL data.\nSQL data: {sql_response}"}]
+        {"role": "user", "content": f"""Convert the following SQL data into natural language, keep \
+the response short and concise and never mention id of the SQL data. \
+SQL data: {sql_response}"""}]
 
     headers = {
         "Content-Type": "application/json",

@@ -1,7 +1,7 @@
 import json
 
 from openai_api import chat_completion_request, format_sql_response
-from utils import database_schema_string, execute_function_call
+from utils import database_schema_string, execute_function_call, database_definitions
 
 
 tools = [
@@ -15,13 +15,13 @@ tools = [
                 "properties": {
                     "query": {
                         "type": "string",
-                        "description": f"""
-                                SQL query extracting info to answer the user's question.
-                                SQL should be written using this database schema:
-                                {database_schema_string}
-                                The query should be returned in plain text, not in JSON. 
-                                Don't assume any column names that are not in the database schema.
-                                """,
+                        "description": f"""SQL query extracting info to answer the user's question. \
+SQL should be written using this database schema: \
+{database_schema_string} \
+The query should be returned in plain text, not in JSON. \
+Don't assume any column names that are not in the database schema, use the \
+following data definitions instead: \
+{database_definitions}"""
                     }
                 },
                 "required": ["query"],

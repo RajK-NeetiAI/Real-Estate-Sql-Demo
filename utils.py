@@ -55,6 +55,9 @@ database_schema_string = "\n".join(
     ]
 )
 
+database_definitions = {}
+with open('data_definations.json', 'r') as file:
+    database_definitions = json.loads(file.read())
 
 def serialize_datetime(obj: datetime.datetime) -> str:
     if isinstance(obj, datetime.datetime):
